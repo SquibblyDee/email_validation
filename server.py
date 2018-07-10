@@ -18,42 +18,18 @@ def index():
 @app.route('/process', methods=['POST'])
 def create():
     all_emails = mysql.query_db("SELECT * FROM emails")
-    query = "INSERT INTO emails (email, created_at, updated_at) VALUES (%(email)s, NOW(), NOW());"
+    print("ALL EMAILS: ", all_emails)
+    query = "INSERT INTO emails (email, date_created, date_updated) VALUES (%(email)s, NOW(), NOW());"
     data =  {
             'email': request.form['emailInput'],
             }
     if '@' not in data['email']:
         flash('Email is not valid!')
-        print("DATA", data['email'])
+        mysql.query_db(query, data)
         return redirect('/')
-    elif data['email'] not in all_emails:
-        for email in all_emails:
-            print("DATA[email]", data['email'])
-            print("DATA LOOPX", data)
-            print("EMAILS", all_emails)
-            for val in email:
-                if data['email'] not in str(email[val]):
-                    print("SUCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSSSs")
-                    mysql.query_db(query, data)
-                    return render_template('/success.html', emails = all_emails) 
-                else:
-                    flash('Email already exists!')
-                    return redirect('/')
-        print("DATA[email]", data['email'])
-        print("DATA", data)
-        print("EMAILS", all_emails)
-        # return redirect('/')
-    # else:
-        # all_emails = mysql.query_db("SELECT email, created_at FROM emails")
-        # print("Fetched all friends", all_emails, "\n")
-        # mysql.query_db(query, data)
-        # return render_template('/success.html', emails = all_emails)
+    else:
+        return redirect('/')
 
-@app.route('/success')
-def success():
-    query = "DISPLAY * FROM emails"
-    mysql.query_db(query)
-    print("QUERY", query)
 
 if __name__ == "__main__":
     app.run(debug=True)
