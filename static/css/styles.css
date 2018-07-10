@@ -1,0 +1,44 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    outline: 1px solid red;
+}
+
+p{
+    display:inline-block;
+}
+
+.form-group{
+    margin: 20% 0% 0% 35%;
+}
+
+button{
+    margin: 2% 0% 0% 60%;
+}
+
+.successbox{
+    background-color: green;
+    outline: 2px solid black;
+    width: 80%;
+    margin: 3% 0% 3% 10%;
+}
+
+.everything_else{
+    margin-left: 5%;
+}
+
+table{
+    margin-left: 5%;
+    width: 90%;
+    font-size: 16pt;
+}
+
+h3{
+    margin: 5% 0% 3% 0%;
+    padding: 5%;
+    width: 50%;
+    outline: 2px solid black;
+    background-color: red;
+    color: white;
+    text-align: center;
+}

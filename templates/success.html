@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Success Page</title>
+        <!-- linking a css style sheet -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+        <!-- Linking Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0./css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- linking a javascript file -->
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script> -->
+    </head>
+    <body>
+        <div class="container">
+            <div class="successbox">
+                <h2> The email you entered, is a VALID email address! Thank you! </h2>
+            </div>
+            <div class="everything_else">
+                <h2><u>Email Addresses Entered</u></h2>
+                <table>
+                    {% for row in emails %}
+                        <tr>
+                        {% for d in row %}
+                            <td>{{ row[d] }}</td>
+                        {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
