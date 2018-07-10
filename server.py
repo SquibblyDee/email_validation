@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, session
 # import the function connectToMySQL from the file mysqlconnection.py
 from mysqlconnection import connectToMySQL
 app = Flask(__name__)
@@ -12,13 +12,13 @@ mysql = connectToMySQL('mydb')
 @app.route('/')
 def index():
     all_emails = mysql.query_db("SELECT * FROM emails")
-    print("Fetched all friends", all_emails, "\n")
+    # print("Fetched all friends", all_emails, "\n")
     return render_template('index.html', emails = all_emails)
 
 @app.route('/process', methods=['POST'])
 def create():
     all_emails = mysql.query_db("SELECT * FROM emails")
-    print("ALL EMAILS: ", all_emails)
+    # print("ALL EMAILS: ", all_emails)
     query = "INSERT INTO emails (email, date_created, date_updated) VALUES (%(email)s, NOW(), NOW());"
     data =  {
             'email': request.form['emailInput'],
@@ -36,6 +36,7 @@ def create():
 
     # if none of our errors kick off them render success.html and pass all out emails over for display
     else:
+        session['email'] = data['email']
         mysql.query_db(query, data)
         desired_columns = mysql.query_db("SELECT email, date_created FROM emails ORDER BY date_created DESC")
         return render_template('/success.html', emails=desired_columns)

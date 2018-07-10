@@ -1,7 +1,6 @@
 *{
     margin: 0px;
     padding: 0px;
-    outline: 1px solid red;
 }
 
 p{
@@ -13,14 +12,14 @@ p{
 }
 
 button{
-    margin: 2% 0% 0% 60%;
+    margin: 2% 0% 0% 45%;
 }
 
 .successbox{
     background-color: green;
     outline: 2px solid black;
     width: 60%;
-    margin: 3% 0% 3% 10%;
+    margin: 1% 0% 3% 10%;
     padding: 3% !important;
 }
 
