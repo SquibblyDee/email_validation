@@ -11,7 +11,7 @@
         <div class="container">
             <form action='/process' method='post'>
                 <div class="form-group">
-                        <!-- loop through out flash messages and filter them for "Email" -->
+                        <!-- loop through our flash messages and filter them for "Email" -->
                         {% with messages = get_flashed_messages() %}
                             {% if messages %}
                                 {% for message in messages %}
