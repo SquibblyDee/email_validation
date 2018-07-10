@@ -23,22 +23,12 @@ def create():
     data =  {
             'email': request.form['emailInput'],
             }
-    # This handles basic form validation only checks for @ sign
     if '@' not in data['email']:
         flash('Email is not valid!')
         return redirect('/')
-
-    # This iterates through all emails returned by the database and returns a flash error if a dupe exists
-    for email in all_emails:
-        if data['email'] == email['email']:
-            flash('Email is already taken!')
-            return redirect('/')
-
-    # if none of our errors kick off them render success.html and pass all out emails over for display
     else:
         mysql.query_db(query, data)
-        desired_columns = mysql.query_db("SELECT email, date_created FROM emails ORDER BY date_created DESC")
-        return render_template('/success.html', emails=desired_columns)
+        return redirect('/')
 
 
 if __name__ == "__main__":

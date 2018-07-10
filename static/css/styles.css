@@ -19,8 +19,9 @@ button{
 .successbox{
     background-color: green;
     outline: 2px solid black;
-    width: 80%;
+    width: 60%;
     margin: 3% 0% 3% 10%;
+    padding: 3% !important;
 }
 
 .everything_else{
@@ -30,7 +31,7 @@ button{
 table{
     margin-left: 5%;
     width: 90%;
-    font-size: 16pt;
+    font-size: 20pt;
 }
 
 h3{
